@@ -15,8 +15,8 @@ body {
 
 .container {
     display: grid;
-    grid-weather-feellate-columns: repeat(4, 1fr);
-    grid-weather-feellate-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
     min-height: 100vh;
 }
 
@@ -68,29 +68,21 @@ body {
 }
 
 .weather-app {
-    border: 3px solid red;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+    padding: 4rem;
     background-color: rgba(0, 0, 0, 0.5);
     margin-left: 20%;
-    -bottom: 30%;
-    max-width: 100%;
-    min-height: 100%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: 1fr 1fr 2fr 1fr;
     gap: 10px;
     font-size: 4rem;
     margin-right: 20%;
-    grid-template-areas:
-        "weather-icon weather"
-        "city city"
-        "temp weather feel"
-        "temp humidity";
-
+    column-gap: 5rem;
 }
 
-.weather-app-element{
+.weather-app-element {
     color: white;
-    font-weight: 700;
 }
 
 /* .weather-icon {
@@ -100,6 +92,7 @@ body {
 } */
 
 .city {
+    grid-row: 2/2;
     font-size: 7rem;
     letter-spacing: -1px;
     font-weight: 800;
@@ -109,19 +102,37 @@ body {
 
 .weather {
     grid-column: 1/1;
+    grid-row: 3/3;
     font-size: 5rem;
     letter-spacing: -0.3px;
     font-weight: 400;
+    margin-left: 2rem;
+}
+
+.weather::first-letter {
+    text-transform: uppercase;
 }
 
 .weather-feel {
-    color: green;
+    font-size: 2.5rem;
+    grid-row: 3/3;
+    grid-column: 2/2;
+    align-self: center;
 }
 
 .temp {
-    color: blue;
+    font-size: 4;
+    align-self: flex-start;
+    font-size: 2.5rem;
+    grid-row: 4/4;
+    grid-column: 1/1;
+    margin-top: -4.3rem;
+    margin-left: 9rem;
 }
 
 .humidity {
-    color: red;
+    align-self: flex-end;
+    font-size: 2.5rem;
+    grid-row: 3/3;
+    grid-column: 2/2;
 }

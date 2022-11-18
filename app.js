@@ -15,25 +15,24 @@ async function getWeather() {
         const city = weatherData.name;
         const weatherCondition = weatherData.weather[0].description;
         const temperature = weatherData.main.temp;
-        const weatherIcon = weatherData.weather[0].icon;
+        cons = weatherData.weather[0].icon;
         const feelsLike = weatherData.main.feels_like;
         const humidity = weatherData.main.humidity;
 
-
+        search.value = '' ;
         //returning a object (which is a promise)
-        return { city, weatherCondition, temperature, weatherIcon, feelsLike, humidity };
+        return { city, weatherCondition, temperature, feelsLike, humidity };
     }
     catch {
-        console.log("error")
+        alert("error")
     }
 
 }
 
-//Getting an async promise value as obj (from getWeather()) and using the values.
+//Getting an async promise value as obj (from getWeather()) and use the values.
 function displayData() {
     getWeather().then(resp => {
-        const { city, weatherCondition, temperature, weatherIcon, feelsLike, humidity } = resp;
-        // img.src = `http://openweathermap.org/img/w/${weatherIcon}.png`
+        const { city, weatherCondition, temperature, feelsLike, humidity } = resp;
         container.textContent=' ';
         createNode("city", city);
         createNode("weather", weatherCondition);
@@ -43,6 +42,7 @@ function displayData() {
     })
 }
 
+//Function to create nodes
 function createNode(classList, value) {
     const weatherNode = document.createElement('div');
     weatherNode.classList.add('weather-app-element');
@@ -51,8 +51,11 @@ function createNode(classList, value) {
     container.appendChild(weatherNode);
 }
 
+//Starting page window
 displayData();
 
+
+//Search for weather when enter is pressed
 form.addEventListener('keydown', (e) => {
     if (e.key === "Enter") {
         e.preventDefault();
